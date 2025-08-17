@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Engineer Home Page</title>
+  <link rel="stylesheet" href="../CSS/EngineerHomePage.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="../Media/logo.png" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header class="app-header">
+    <div class="logo-group">
+      <img src="../Media/saudia_logo.png" class="logo" alt="Saudia logo" />
+      <img src="../Media/academy_text_logo.png" class="logo-text" alt="Academy logo" />
+    </div>
+    <nav class="nav-buttons">
+      <button data-link="UserProfile.html" class="text-btn">PROFILE</button>
+      <button data-link="welcomePage.html" class="text-btn">HOME</button>
+      <button data-link="login.html" class="filled-btn">LOGOUT</button>
+    </nav>
+  </header>
+
+  <div id="notificationBanner" style="display:none;"></div>
+
+  <div class="dashboard-container">
+    <div class="header">
+      <h1>Simulator Certification Dashboard</h1>
+      <div class="date" id="currentDate"></div>
+    </div>
+
+    <div class="stats-overview">
+      <div class="stat-card">
+        <div class="stat-number" id="totalSimulators">0</div>
+        <div class="stat-label">Total Simulators</div>
+      </div>
+      <div class="stat-card warning">
+        <div class="stat-number" id="expiringSoon">0</div>
+        <div class="stat-label">Expiring Soon<br />
+          <small aria-label="GACA 2 months, EASA 3 months" style="font-size: 10px; opacity: 0.8;">GACA: 2mo • EASA:
+            3mo</small>
+        </div>
+      </div>
+      <div class="stat-card danger">
+        <div class="stat-number" id="expired">0</div>
+        <div class="stat-label">Expired</div>
+      </div>
+      <div class="stat-card info">
+        <div class="stat-number" id="activeRequests">0</div>
+        <div class="stat-label">Active Requests</div>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="charts-section">
+        <div class="chart-header">
+          <div class="chart-title">Simulator Status Overview</div>
+          <div class="chart-subtitle">Current status of all simulators</div>
+        </div>
+        <canvas id="statusChart"></canvas>
+      </div>
+
+      <div class="alerts-section">
+        <div class="alert-panel">
+          <div class="panel-header">
+            <div class="panel-icon warning">
+              <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="panel-title">Expiring Soon</div>
+          </div>
+          <div id="expiring-list">
+            <div class="loading">
+              <div class="spinner"></div>
+              Loading...
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-panel">
+          <div class="panel-header">
+            <div class="panel-icon info">
+              <i class="fas fa-clipboard-list"></i>
+            </div>
+            <div class="panel-title">Active Requests</div>
+          </div>
+          <div id="requests-list">
+            <div class="loading">
+              <div class="spinner"></div>
+              Loading...
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-section">
+      <div class="menu-grid">
+        <div class="menu-card" onclick="location.href='RequestToMR.html'">
+          <div class="menu-icon">
+            <i class="fas fa-paper-plane"></i>
+          </div>
+          <h3>Send Request to MR/CM</h3>
+          <p>Submit certification requests</p>
+        </div>
+
+        <div class="menu-card" onclick="location.href='checkProcess.html'">
+          <div class="menu-icon">
+            <i class="fas fa-tasks"></i>
+          </div>
+          <h3>Request Progress Status</h3>
+          <p>Track your request status</p>
+        </div>
+
+        <div class="menu-card" onclick="location.href='RequestsList.html'">
+          <div class="menu-icon">
+            <i class="fas fa-list"></i>
+          </div>
+          <h3>Check my Requests</h3>
+          <p>View all your requests</p>
+        </div>
+
+        <div class="menu-card" onclick="location.href='AddSimulator.html'">
+          <div class="menu-icon">
+            <i class="fas fa-plus"></i>
+          </div>
+          <h3>Add New Device</h3>
+          <p>Register new simulator</p>
+        </div>
+
+        <div class="menu-card" onclick="location.href='modifySimulator.html'">
+          <div class="menu-icon">
+            <i class="fas fa-edit"></i>
+          </div>
+          <h3>Modify Device Information</h3>
+          <p>Update simulator details</p>
+        </div>
+
+        <div class="menu-card" onclick="location.href='ViewEvaluationForm.html'">
+          <div class="menu-icon">
+            <i class="fas fa-file-alt"></i>
+          </div>
+          <h3>View Evaluation Form</h3>
+          <p>Check evaluation forms</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="logo-group footer-logo">
+          <img src="../Media/saudia_logo.png" class="logo small" alt="Saudia logo" />
+          <img src="../Media/academy_text_logo.png" class="logo-text small" alt="Academy logo" />
+        </div>
+        <div class="visit-us">
+          <span>VISIT US</span>
+          <a href="https://x.com/psaa_sbu?lang=ar" target="_blank" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="tel:+966126860114" aria-label="Phone">
+            <i class="fas fa-phone-alt"></i>
+          </a>
+          <a href="mailto:Psaasales@saudia.com" aria-label="Email">
+            <i class="fas fa-envelope"></i>
+          </a>
+          <a href="https://www.linkedin.com/company/prince-sultan-aviation-academy/" target="_blank"
+            aria-label="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col about">
+        <h2>About Us</h2>
+        <p>
+          We provide a smart system to track and manage certificates for aviation simulation devices. Our goal is to
+          ensure efficient, accurate, and reliable handling of certificate issuance, renewal, and expiration.
+        </p>
+      </div>
+    </div>
+
+    <div class="copyright">
+      Copyright © Prince Sultan Aviation Academy
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll("[data-link]").forEach((el) =>
+        el.addEventListener("click", () => {
+          const target = el.getAttribute("data-link");
+          if (target && target !== "#") {
+            window.location.href = target;
+          }
+        })
+      );
+    });
+  </script>
+  <script type="module" src="../JS/EngineerHomePage.js"></script>
+
+</body>
+
+</html>
